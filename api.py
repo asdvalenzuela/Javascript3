@@ -26,6 +26,7 @@ def wall_error(error):
 
     return {
         "result": error,
+        "status": "error"
     }
 
 def wall_list():
