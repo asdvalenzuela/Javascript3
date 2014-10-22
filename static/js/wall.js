@@ -21,8 +21,6 @@ function handleFormSubmit(evt) {
     // Reset the message container to be empty
     textArea.val("");
 
-    getMessage();
-
     // setInterval(function() {
     //     $('#message-form').prop('disabled',true);
     //     },5000);
@@ -39,6 +37,7 @@ function addMessage(msg) {
         function (data) {
             console.log("addMessage: ", data);
             displayResultStatus(data.result);
+            displayMessages(data);
         }
     );
 }
@@ -82,20 +81,27 @@ function displayResultStatus(resultMsg) {
 
 function getMessage (){
     $.get("/api/wall/list", function(data){
-            // console.log(data);
-        $("#message-container").empty();
-
-        for (var i=0; i<data.messages.length; i++) {
-            var message_text = data.messages[i].message;
-            $('#message-container').prepend('<li class="list-group-item">' +
-                message_text + '</li>');
-        }
+        displayMessages(data);
     }
     );
 }
 
-$("#message-clear").click(function(){
-    $.get('/api/wall/clear', function(result){
-        getMessage();
+function displayMessages (data){
+    $("#message-container").empty();
+
+    for (var i=0; i<data.messages.length; i++) {
+        var message_text = data.messages[i].message;
+        $('#message-container').prepend('<li class="list-group-item">' +
+            message_text + '</li>');
+    }
+}
+
+$("#message-clear").click(function(evt){
+    $.get('/api/wall/clear', function(data){
+        displayMessages(data);
     });
 });
+
+
+
+

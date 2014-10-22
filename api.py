@@ -60,8 +60,7 @@ def wall_add(msg):
     return result
 
 def wall_clear():
-    session['wall'] =DEFAULT_MESSAGES
-
+    session["wall"] = DEFAULT_MESSAGES
     result = wall_list()
     result["result"] = "Wall Cleared"
 
