@@ -11,9 +11,6 @@ class myHTMLParser(HTMLParser):
         print tag
     def handle_data(self, data):
         print data
-    def remove_html(self, statement):
-        result = parser.feed(statement)
-        print result
 
 parser = myHTMLParser()
 print(parser.feed('<html><head><title>Test</title></head>'

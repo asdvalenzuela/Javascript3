@@ -26,7 +26,6 @@ def wall_error(error):
 
     return {
         "result": error,
-        "status": "error"
     }
 
 def wall_list():
@@ -34,6 +33,7 @@ def wall_list():
 
         returns: dictionary with messages list + result code.
     """
+    print session
 
     return {
         "result": "OK",
@@ -53,7 +53,7 @@ def wall_add(msg):
         "message": msg,
     }
 
-    session.setdefault('wall', []).append(wall_dict)
+    session['wall'].append(wall_dict)
 
     result = wall_list()
     result["result"] = "Message Received"

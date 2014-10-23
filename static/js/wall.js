@@ -25,8 +25,6 @@ function handleFormSubmit(evt) {
     //     $('#message-form').prop('disabled',true);
     //     },5000);
 }
-
-
 /**
  * Makes AJAX call to the server and the message to it.
  */
@@ -41,8 +39,6 @@ function addMessage(msg) {
         }
     );
 }
-
-
 /**
  * This is a helper function that does nothing but show a section of the
  * site (the message result) and then hide it a moment later.
